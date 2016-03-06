@@ -1,17 +1,35 @@
-body{
-  background: #45ddff;
+body {
+	padding:20px;
+}
+div a,a:link,a:visited,a:active {
+	color:#029fc2;
+}
+div a:focus{
+	color:#029fc2;
+	text-decoration:none;
+}
+div a:hover{
+	color: #b3f1ff;
+	text-decoration:none;
 }
 .title-section{
   text-align:center;
   margin-bottom:40px;
 }
+.switch{
+float:right;
+font-size:8pt;
+margin-top:15px;
+width:60px;
 
+}
 .outer{
   max-width:950px;
   background-color: #FFFFFF;
   border-style:solid;
   border-width:1px;
   border-color:#B5B5B5;
+  padding-bottom:20px;
 }
 .entry{
 	padding:5px 0 5px 0;
@@ -27,8 +45,9 @@ body{
   text-align:center;
 }
 .status{
-  text-align:center;
+	max-height:60px;
   overflow:hidden;
+  text-align:center; 
 }
 @media screen and (min-width:991px){
 .user, .status { 

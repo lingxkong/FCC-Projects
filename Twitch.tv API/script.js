@@ -49,10 +49,24 @@ function loopJson(i) {
 
 }
 
+
 $(document).ready(
   function() {
     for (var i = 0; i < userList.length; i++) {
       loopJson(i);
     }
+    $("#switch-all").on("click",function(){
+	    $(".channel-online").show();
+	    $(".channel-offline").show();
+    });
+    $("#switch-on").on("click",function(){
+	    $(".channel-online").show();
+	    $(".channel-offline").hide();
+    }); 
+    $("#switch-off").on("click",function(){
+	    $(".channel-online").hide();
+	    $(".channel-offline").show();
+    });
   }
+  
 );
