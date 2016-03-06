@@ -1,4 +1,4 @@
-var userList = ["storbeck", "freecodecamp", "ESL_SC2", "OgamingSC2", "terakilobyte"]; //"brunofin", "storbeck", "terakilobyte", "habathcx", "RobotCaleb", "thomasballinger", "noobs2ninjas", "beohoff", "comster404"];
+var userList = ["storbeck", "freecodecamp", "ESL_SC2", "OgamingSC2", "terakilobyte", "brunofin", "storbeck", "terakilobyte", "habathcx", "RobotCaleb", "thomasballinger", "noobs2ninjas", "beohoff", "comster404"];
 //var userEntry="";
 
 
@@ -13,25 +13,9 @@ function loopJson(i) {
     var userLogoURL = "http://dummyimage.com/50x50/ecf0e7/5c5457.jpg&text=0x3F";
     if (data.hasOwnProperty("stream")) {
       var userStream = data.stream;
-      if (userStream.hasOwnProperty("channel")) {
-        var userName = userStream.channel.display_name;
-        userStatus = "Online";
-        userGame = userStream.game;
-        userGameStatus = userStream.channel.status;
-        userURL = userStream.channel.url;
-        if (userStream.channel.logo !== null) {
-          userLogoURL = userStream.channel.logo;
-        }
-        var userEntry = "<div class=\"row\"><div class=\"user col-sm-2\"><a href=\"" + userURL + "\" target=\"_blank\"><img src=\"" + userLogoURL + "\" class=\"logo\" width=\"50\" height=\"50\"></a></div><div class=\"user col-md-3\"><a href=\"" + userURL + "\" target=\"_blank\">" + userName + "</a></div><div class=\"status col-md-7\">" + userGame + ": " + userGameStatus + "</div></div>";
-        var $entry = $("<p class='online'>").html(userEntry);
-        $(".channel-list").append($entry);
-      } 
-      if (userStream.hasOwnProperty("channel") === false) 
+      if (userStream==null) 
       {
-        console.log(userStream.hasOwnProperty("channel"));
-        console.log(i);
         $.getJSON("https://api.twitch.tv/kraken/channels/" + user + "?callback=?", function(dataOff) {
-          console.log("off " + i);
           var userName = dataOff.display_name;
           var userStatus = "Offline";
           var userURL = dataOff.url;
@@ -45,7 +29,27 @@ function loopJson(i) {
           $(".channel-list").append($entry);
         });
       }
+      else if (userStream.hasOwnProperty("channel")) {
+        var userName = userStream.channel.display_name;
+        userStatus = "Online";
+        userGame = userStream.game;
+        userGameStatus = userStream.channel.status;
+        userURL = userStream.channel.url;
+        if (userStream.channel.logo !== null) {
+          userLogoURL = userStream.channel.logo;
+        }
+        var userEntry = "<div class=\"row\"><div class=\"user col-sm-2\"><a href=\"" + userURL + "\" target=\"_blank\"><img src=\"" + userLogoURL + "\" class=\"logo\" width=\"50\" height=\"50\"></a></div><div class=\"user col-md-3\"><a href=\"" + userURL + "\" target=\"_blank\">" + userName + "</a></div><div class=\"status col-md-7\">" + userGame + ": " + userGameStatus + "</div></div>";
+        var $entry = $("<p class='online'>").html(userEntry);
+        $(".channel-list").append($entry);
+      } 
     }
+    else if (data.hasOwnProperty("error")) {
+	    userStatus = "Account closed";
+	    var userLogoURL = "http://dummyimage.com/50x50/ecf0e7/5c5457.jpg&text=0x3F";
+	    var userEntry = "<div class=\"row\"><div class=\"user col-sm-2\"><img src=\"" + userLogoURL + "\" class=\"logo\" width=\"50\" height=\"50\"></div><div class=\"user col-md-3\">" + user + "</div><div class=\"status col-md-7\">" + userStatus + "</div></div>";
+	    var $entry = $("<p class='offline'>").html(userEntry);
+	    $(".channel-list").append($entry);
+    } 
   });
 
 }
