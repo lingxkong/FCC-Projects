@@ -1,0 +1,79 @@
+body {
+  padding: 20px;
+}
+
+div a,
+a:link,
+a:visited,
+a:active {
+  color: #029fc2;
+}
+div{
+	border-style:solid;
+}
+div a:focus {
+  color: #029fc2;
+  text-decoration: none;
+}
+
+div a:hover {
+  color: #b3f1ff;
+  text-decoration: none;
+}
+
+.title-section {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.switch {
+  float: right;
+  font-size: 8pt;
+  margin-top: 15px;
+  width: 60px;
+}
+
+.outer {
+  max-width: 950px;
+  background-color: #FFFFFF;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #B5B5B5;
+  padding-bottom: 20px;
+}
+
+.entry {
+  padding: 5px 0 5px 0;
+  vertical-align: middle;
+}
+
+.user-logo {
+  text-align: center;
+  padding: 0 5px 0 5px;
+}
+
+.user {
+  font-weight: bold;
+  padding: 0 10px 0 10px;
+  text-align: center;
+}
+
+.status {
+  max-height: 60px;
+  overflow: hidden;
+  text-align: center;
+}
+
+@media screen and (min-width:991px) {
+  .user,
+  .status {
+    line-height: 50px;
+  }
+}
+
+@media screen and (min-width:767px) and (max-width:990px) {
+  .user,
+  .status {
+    line-height: 25px;
+  }
+}
