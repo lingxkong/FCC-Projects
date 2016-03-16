@@ -1,5 +1,4 @@
 var userList = ["freecodecamp", "ESL_SC2", "OgamingSC2", "terakilobyte", "brunofin", "storbeck", "habathcx", "RobotCaleb", "thomasballinger", "noobs2ninjas", "beohoff", "comster404"];
-//var userEntry="";
 
 function loopJson(i) {
   var user = userList[i];
@@ -49,24 +48,34 @@ function loopJson(i) {
 
 }
 
-
 $(document).ready(
   function() {
     for (var i = 0; i < userList.length; i++) {
       loopJson(i);
     }
-    $("#switch-all").on("click",function(){
-	    $(".channel-online").show();
-	    $(".channel-offline").show();
+    $("#switch-all").css("color", "#148f37");
+    $("#switch-all").on("click", function() {
+      $(".channel-online").show();
+      $(".channel-offline").show();
+      $("#switch-all").css("color", "#148f37");
+      $("#switch-on").css("color", "#029fc2");
+      $("#switch-off").css("color", "#029fc2");
+
     });
-    $("#switch-on").on("click",function(){
-	    $(".channel-online").show();
-	    $(".channel-offline").hide();
-    }); 
-    $("#switch-off").on("click",function(){
-	    $(".channel-online").hide();
-	    $(".channel-offline").show();
+    $("#switch-on").on("click", function() {
+      $(".channel-online").show();
+      $(".channel-offline").hide();
+      $("#switch-all").css("color", "#029fc2");
+      $("#switch-on").css("color", "#148f37");
+      $("#switch-off").css("color", "#029fc2");
+    });
+    $("#switch-off").on("click", function() {
+      $(".channel-online").hide();
+      $(".channel-offline").show();
+      $("#switch-all").css("color", "#029fc2");
+      $("#switch-on").css("color", "#029fc2");
+      $("#switch-off").css("color", "#148f37");
     });
   }
-  
+
 );
