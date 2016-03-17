@@ -2,6 +2,8 @@
   width:200px;
   height:20px;
   background-color: #99b1ff;
+  padding:4px;
+  overflow:hidden;
   text-align:right;
 }
 .btn-row{

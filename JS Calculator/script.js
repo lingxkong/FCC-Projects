@@ -3,15 +3,37 @@ var fieldText = "";
 function writeIn(btnText) {
 	var strText = btnText.toString();
 	fieldText+=strText;
-	console.log(fieldText);
 	$(".field").text(fieldText);
 
 }
+/*
+function checkOperator(btnText){
+
+}
+
+function clear1(){
+
+}
+
+function allClear(){
+
+}
+
+function ans(){
+
+}
+
+function equals(str){
+
+}
+*/
 
 $(document).ready(
 	function() {
-		$("#n7").on("click", function(e){
-			var val = 7;
+		$("button").click(function(e){
+			var id = e.target.id; 
+			console.log(id);
+			var val = $("#" + id).text();
 			writeIn(val);
 		});
 
