@@ -1,5 +1,5 @@
 var fieldText = "";
-
+var memory = "";
 function writeIn(btnText) {
 	var strText = btnText.toString();
 	fieldText+=strText;
@@ -14,11 +14,15 @@ function checkOperator(btnText){
 function clear1(){
 
 }
+*/
 
 function allClear(){
-
+	fieldText = "";
+	$(".field").text(fieldText);
+	memory = "";
 }
 
+/*
 function ans(){
 
 }
@@ -32,9 +36,14 @@ $(document).ready(
 	function() {
 		$("button").click(function(e){
 			var id = e.target.id; 
-			console.log(id);
-			var val = $("#" + id).text();
-			writeIn(val);
+			if (id==="AC"){
+				allClear();
+			}
+
+			else {
+				var val = $("#" + id).text();
+				writeIn(val);
+			}
 		});
 
 	}
