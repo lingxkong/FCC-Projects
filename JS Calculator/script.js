@@ -3,6 +3,7 @@ var memory = "";
 function writeIn(btnText) {
 	var strText = btnText.toString();
 	fieldText+=strText;
+	memory=fieldText;
 	$(".field").text(fieldText);
 
 }
@@ -10,11 +11,19 @@ function writeIn(btnText) {
 function checkOperator(btnText){
 
 }
-
+*/ 
 function clear1(){
 
+	console.log(memory);
+	memory=memory.split("");
+
+	console.log(memory);
+	memory.pop();
+	console.log(memory);
+	memory=memory.join("");
+	fieldText=memory;
+	$(".field").text(fieldText);
 }
-*/
 
 function allClear(){
 	fieldText = "";
@@ -39,7 +48,9 @@ $(document).ready(
 			if (id==="AC"){
 				allClear();
 			}
-
+			else if (id==="CE") {
+				clear1();
+			}
 			else {
 				var val = $("#" + id).text();
 				writeIn(val);
