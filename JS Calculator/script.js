@@ -35,6 +35,7 @@ function ans(){
 */ 
 
 function operate(num1,num2,op){
+	console.log(num1);
 	var n1=parseNum(num1);
 	var n2=parseNum(num2);
 	if (op==="+")
@@ -49,7 +50,7 @@ function operate(num1,num2,op){
 	return n1%n2;	
 }
 function parseNum(num) {
-	if (num.indexOf("n")===0){
+	if (num.indexOf("n")===0 || num.indexOf("-")===0){
 		var num = num.substring(1);
 		var neg=true;
 	}
@@ -80,47 +81,50 @@ function equals(str){
 	else if (str[0]==="*" || str[0]==="/" || str[str.length-1]==="+" || str[str.length-1]==="-" || str[str.length-1]==="*" || str[str.length-1]==="/") 
 		$(".field").text("error");
 	else {
-		if (operators.length>1)
-			operators = operators.split(" ");
-	var opIndMD=-1;
-	var opIndAS=-1;
+		operators=operators.substring(1,operators.length-1);
+		operators = operators.split(" ");
+	var opIndMD=0;
+	var opIndAS=0;
 	var i=0;
 	var op="";
+
 	while (i<operators.length){
 		var i_m=operators.indexOf("*",opIndMD);
 		var i_d=operators.indexOf("/",opIndMD);
 		var i_a=operators.indexOf("+",opIndAS);
 		var i_s=operators.indexOf("-",opIndAS);
 		var ind=-1;
-		if (i_m>0 && i_d>0) {
+		if (i_m>=0 && i_d>=0) {
 			opIndMD=Math.min(i_m,i_d);
 			ind=opIndMD;
 			op = operators[opIndMD];
+			console.log("check1");
 		}
-		else if (i_m>0 || i_m>0) {
+		else if (i_m>=0 || i_m>=0) {
 			opIndMD=Math.max(i_m,i_d);
 			ind=opIndMD;
 			op = operators[opIndMD];
+			console.log("check2");
 		}
-		else if (i_a>0 && i_s>0) {
+		else if (i_a>=0 && i_s>=0) {
 			opIndAS=Math.min(i_a,i_s);
 			ind=opIndAS;
 			op = operators[opIndAS];
+			console.log("check3");
 		}
-		else if (i_m>0 || i_m>0) {
-			opIndAS=Math.max(i_m,i_d);
+		else if (i_a>=0 || i_s>=0) {
+			opIndAS=Math.max(i_a,i_s);
 			ind=opIndAS;
 			op = operators[opIndAS];
+			console.log("check4");
 		}
-		console.log(ind);
-		console.log(operators);
-		var calc=operate(nums[ind], nums[ind+1], op);
+		console.log(nums);
+		var calc=toString(operate(nums[ind], nums[ind+1], op));
 		nums.splice(ind,2);
 		nums.splice(ind,0,calc);
 		operators.splice(ind,1);
 	}
-
-
+	console.log("nums = " + nums);
 
 	evaluated=true;
 	$(".field").text(nums[0]);
