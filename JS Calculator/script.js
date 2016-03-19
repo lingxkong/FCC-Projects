@@ -35,11 +35,11 @@ function ans(){
 */ 
 
 function operate(num1,num2,op){
-	console.log(num1);
 	var n1=parseNum(num1);
 	var n2=parseNum(num2);
-	if (op==="+")
+	if (op==="+") {
 		return n1+n2;
+	}
 	else if (op==="-")
 		return n1-n2;
 	else if (op==="*")
@@ -72,14 +72,24 @@ function equals(str){
 	operators = operators.replace(/\s{2,}/g, " ");
 	nums=nums.split(" ");
 	
+	// tests for bad syntax (multiple decimals in one number)
 	var numDec=nums.filter(function(val){
 		var pers = val.match(/[.]/g);
 		return (pers!=null);
 	});
+
+	// a few cases rule out bad syntax
 	if (nums.indexOf("  ")>=0 || numDec.length>0)
 		$(".field").text("error");
 	else if (str[0]==="*" || str[0]==="/" || str[str.length-1]==="+" || str[str.length-1]==="-" || str[str.length-1]==="*" || str[str.length-1]==="/") 
 		$(".field").text("error");
+	// a case to display the number if only one number is entered
+	else if (nums.length===1) {
+		$(".field").text(nums);	
+		evaluated=true;
+	}
+
+	// actual calculation
 	else {
 		operators=operators.substring(1,operators.length-1);
 		operators = operators.split(" ");
@@ -93,38 +103,28 @@ function equals(str){
 		var i_d=operators.indexOf("/",opIndMD);
 		var i_a=operators.indexOf("+",opIndAS);
 		var i_s=operators.indexOf("-",opIndAS);
+		var i_p=operators.indexOf("%",opIndMD);
 		var ind=-1;
-		if (i_m>=0 && i_d>=0) {
-			opIndMD=Math.min(i_m,i_d);
+		if (i_m>=0 || i_d>=0 || i_p>=0) {
+			var opArr=[i_m, i_d, i_p];
+			opArr=opArr.filter(function(v){return (v >=0);});
+			opIndMD=Math.min.apply(null, opArr);
 			ind=opIndMD;
 			op = operators[opIndMD];
-			console.log("check1");
-		}
-		else if (i_m>=0 || i_m>=0) {
-			opIndMD=Math.max(i_m,i_d);
-			ind=opIndMD;
-			op = operators[opIndMD];
-			console.log("check2");
-		}
-		else if (i_a>=0 && i_s>=0) {
-			opIndAS=Math.min(i_a,i_s);
-			ind=opIndAS;
-			op = operators[opIndAS];
-			console.log("check3");
 		}
 		else if (i_a>=0 || i_s>=0) {
-			opIndAS=Math.max(i_a,i_s);
+			var opArr=[i_a, i_s];
+			opArr=opArr.filter(function(v){return (v >=0);});
+			opIndMD=Math.min.apply(null, opArr);
 			ind=opIndAS;
 			op = operators[opIndAS];
-			console.log("check4");
 		}
-		console.log(nums);
-		var calc=toString(operate(nums[ind], nums[ind+1], op));
+		var calc=operate(nums[ind], nums[ind+1], op);
+		calc=calc.toString();
 		nums.splice(ind,2);
 		nums.splice(ind,0,calc);
 		operators.splice(ind,1);
 	}
-	console.log("nums = " + nums);
 
 	evaluated=true;
 	$(".field").text(nums[0]);
