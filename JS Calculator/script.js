@@ -76,9 +76,12 @@ function equals(str){
 		str="0"+str;
 	var nums = str.replace(/[+*%\/][-]/g," n");
 	nums = nums.replace(/[-+*%\/]/g," ");
-	var operators = str.replace(/\d|\./g," ");
-		console.log("operators2 = " + operators);
+	var operators =str.replace(/\d|\./g," ");
 	operators = operators.replace(/\s{2,}/g, " ");
+	operators = operators.replace("*-", "*");
+	operators = operators.replace("/-", "/");
+	operators = operators.replace("+-", "+");
+	operators = operators.replace("%-", "%");
 	nums=nums.split(" ");
 
 	// tests for bad syntax (multiple decimals in one number)
