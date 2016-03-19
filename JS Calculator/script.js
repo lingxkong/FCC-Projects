@@ -1,15 +1,31 @@
 var fieldText = "";
 var memory = "";
 var evaluated = false;
+
+//function keyDet(key, mode) {}
+
 function writeIn(btnText) {
 	if (evaluated){
 		fieldText="";
 		evaluated=false;
 	}
-	var strText = btnText.toString();
-	fieldText+=strText;
-	memory=fieldText;
-	$(".field").text(fieldText);
+	if (fieldText.length===24){
+	}
+	else {
+		var lastChar=fieldText[fieldText.length-1];
+		var last2Char=fieldText.substring(fieldText.length-2);
+		var strText = btnText.toString();
+		if ((lastChar==="+" || lastChar==="*" || lastChar==="/" || lastChar==="-" || lastChar==="%") && (strText==="+" || strText==="*" || strText==="/" || strText==="%"))
+			fieldText=fieldText.substring(0, fieldText.length-1);
+		else if (lastChar==="-" && strText==="-")
+			fieldText=fieldText.substring(0, fieldText.length-1);
+		if ((last2Char==="+-" || last2Char==="*-" || last2Char==="/-" || last2Char==="%-") && (strText==="+" || strText==="-" || strText==="*" || strText==="/" || strText==="%")) {} 
+		else {
+		fieldText+=strText;
+		memory=fieldText;
+		$(".field").text(fieldText);
+		}
+	}
 }
 
 function clear1(){
@@ -27,12 +43,6 @@ function allClear(){
 	$(".field").text(fieldText);
 	memory = "";
 }
-
-/*
-function ans(){
-
-}
-*/ 
 
 function operate(num1,num2,op){
 	var n1=parseNum(num1);
@@ -68,12 +78,16 @@ function equals(str){
 		str="0"+str;
 	var nums = str.replace(/[+*%\/][-]/g," n");
 	nums = nums.replace(/[-+*%\/]/g," ");
-	var operators = str.replace(/\d|\./g," ");
+	var operators =str.replace(/\d|\./g," ");
 	operators = operators.replace(/\s{2,}/g, " ");
-	nums=nums.split(" ");
-	
+	operators = operators.replace("*-", "*");
+	operators = operators.replace("/-", "/");
+	operators = operators.replace("+-", "+");
+	operators = operators.replace("%-", "%");
+	nums1=nums.split(" ");
+
 	// tests for bad syntax (multiple decimals in one number)
-	var numDec=nums.filter(function(val){
+	var numDec=nums1.filter(function(val){
 		var pers = val.match(/[.]/g);
 		return (pers!=null);
 	});
@@ -91,6 +105,7 @@ function equals(str){
 
 	// actual calculation
 	else {
+		nums=nums.split(" ");
 		operators=operators.substring(1,operators.length-1);
 		operators = operators.split(" ");
 	var opIndMD=0;
@@ -149,6 +164,8 @@ $(document).ready(
 				writeIn(val);
 			}
 		});
+		/*$(".field").on("keypress", function(e){
+			var key = */
 
 	}
 );
