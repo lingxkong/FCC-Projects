@@ -13,14 +13,18 @@ function writeIn(btnText) {
 	}
 	else {
 		var lastChar=fieldText[fieldText.length-1];
+		var last2Char=fieldText.substring(fieldText.length-2);
 		var strText = btnText.toString();
 		if ((lastChar==="+" || lastChar==="*" || lastChar==="/" || lastChar==="-" || lastChar==="%") && (strText==="+" || strText==="*" || strText==="/" || strText==="%"))
 			fieldText=fieldText.substring(0, fieldText.length-1);
 		else if (lastChar==="-" && strText==="-")
 			fieldText=fieldText.substring(0, fieldText.length-1);
+		if ((last2Char==="+-" || last2Char==="*-" || last2Char==="/-" || last2Char==="%-") && (strText==="+" || strText==="-" || strText==="*" || strText==="/" || strText==="%")) {} 
+		else {
 		fieldText+=strText;
 		memory=fieldText;
 		$(".field").text(fieldText);
+		}
 	}
 }
 
@@ -41,8 +45,6 @@ function allClear(){
 }
 
 function operate(num1,num2,op){
-	console.log(num1);
-	console.log(num2);
 	var n1=parseNum(num1);
 	var n2=parseNum(num2);
 	if (op==="+") {
@@ -82,10 +84,10 @@ function equals(str){
 	operators = operators.replace("/-", "/");
 	operators = operators.replace("+-", "+");
 	operators = operators.replace("%-", "%");
-	nums=nums.split(" ");
+	nums1=nums.split(" ");
 
 	// tests for bad syntax (multiple decimals in one number)
-	var numDec=nums.filter(function(val){
+	var numDec=nums1.filter(function(val){
 		var pers = val.match(/[.]/g);
 		return (pers!=null);
 	});
@@ -103,8 +105,8 @@ function equals(str){
 
 	// actual calculation
 	else {
+		nums=nums.split(" ");
 		operators=operators.substring(1,operators.length-1);
-		console.log("operators1 = " + operators);
 		operators = operators.split(" ");
 	var opIndMD=0;
 	var opIndAS=0;
@@ -118,11 +120,9 @@ function equals(str){
 		var i_s=operators.indexOf("-",opIndAS);
 		var i_p=operators.indexOf("%",opIndMD);
 		var ind=-1;
-		console.log("i_m = " + i_m);
 		if (i_m>=0 || i_d>=0 || i_p>=0) {
 			var opArr=[i_m, i_d, i_p];
 			opArr=opArr.filter(function(v){return (v >=0);});
-			console.log("opArr = " + opArr);
 			opIndMD=Math.min.apply(null, opArr);
 			ind=opIndMD;
 			op = operators[opIndMD];
@@ -134,8 +134,6 @@ function equals(str){
 			ind=opIndAS;
 			op = operators[opIndAS];
 		}
-	console.log("nums = " + nums); 	
-	console.log("ind = " + ind);
 		var calc=operate(nums[ind], nums[ind+1], op);
 		calc=calc.toString();
 		nums.splice(ind,2);
