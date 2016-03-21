@@ -1,24 +1,169 @@
+body {
+	background-color: #4f2f00;
+background-image: linear-gradient(0deg, rgba(255,255,255,.07) 50%, transparent 50%),
+linear-gradient(0deg, rgba(255,255,255,.13) 50%, transparent 50%),
+linear-gradient(0deg, transparent 50%, rgba(255,255,255,.17) 50%),
+linear-gradient(0deg, transparent 50%, rgba(255,255,255,.19) 50%);
+background-size: 13px, 29px, 37px, 53px;
+}
+
+div a, a:link, a:visited, a:active {
+	color:#0062e3;
+}
+
+div a:focus {
+	color:#003170;
+	text-decoration:none;
+}
+
+div a:hover {
+	color:#003170;
+	text-decoration:none;
+}
+
+.wrapper {
+	background: #CCCCCC;
+	border-radius:25px;
+	border-style:solid;
+	border-width:2px;
+	box-shadow: 5px 5px 5px #292929;
+	-moz-box-shadow: 5px 5px 5px #292929;
+  -webkit-box-shadow: 5px 5px 5px #292929;
+	max-width:260px;
+	padding: 20px;
+	text-align:center;
+	width:260px;
+}
+
+.header{
+	font-size:8pt;
+	margin:auto;
+  text-align:left;
+  width:210px;
+
+}
+
 .field{
-  width:200px;
-  height:20px;
-  background-color: #99b1ff;
-  padding:4px;
+  background-color: #999999;
+  border-radius:5px;
+	font-size:14pt;
+	font-weight:bold;
+	-moz-box-shadow:    inset 0 0 7px #000000;
+   -webkit-box-shadow: inset 0 0 7px #000000;
+   box-shadow:         inset 0 0 7px #000000;
+  height:30px;
+  margin:auto;
   overflow:hidden;
+  padding:4px;
   text-align:right;
+  width:212px;
 }
 .btn-row{
-  margin-top:5px;
+	display:inline;
+	margin-top:5px;
+  width:220px;
 }
 button{
+box-shadow: 2px 2px 5px #505050;
+	-moz-box-shadow: 2px 2px 5px #505050;
+  -webkit-box-shadow: 2px 2px 5px #505050;	
   width:100%;
   height:45px;
 }
+.calc-btn button{
+	font-size: 13pt;
+	font-weight:bold;
+}
+
 .calc-btn{
   display:inline-block;
+	margin-top:5px;
   width:50px;
 }
 
+.calc-btn-lg button{
+	color:white;
+	font-size: 13pt;
+	font-weight:bold;
+}
 .calc-btn-lg {
 	display:inline-block;
 	width:104px;
+}
+
+div .calc-btn-colors {
+  background-color: #104994;
+  border-color: #104994;
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
+  background-color: #0e4082;
+  background-image: -moz-linear-gradient(top,#104994,#0b3266);
+  background-image: -webkit-gradient(linear,0 0,0 100%,from(#104994),to(#0b3266));
+  background-image: -webkit-linear-gradient(top,#104994,#0b3266);
+  background-image: -o-linear-gradient(top,#104994,#0b3266);
+  background-image: linear-gradient(to bottom,#104994,#0b3266);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff104994', endColorstr='#ff0b3265', GradientType=0);
+  border-color: #0b3266 #0b3266 #041021;
+  border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);
+}
+
+div .calc-btn-colors:hover,
+.calc-btn-colors:focus {
+	color: #FFFFFF;
+  text-decoration: none;
+  background-position: 0 -15px;
+  -webkit-transition: background-position .1s linear;
+  -moz-transition: background-position .1s linear;
+  -o-transition: background-position .1s linear;
+  transition: background-position .1s linear;
+}
+div .calc-btn-colors:hover,
+.calc-btn-colors:focus {
+	color: #FFFFFF;
+  background-color: #0b3266;
+}
+div .calc-btn-colors:active,
+.calc-btn-colors.active,
+.calc-btn-colors.active:hover,
+.calc-btn-colors.active:focus {
+	color: #FFFFFF;
+  background-color: #0e3e7d;
+  border-color: #0b3266;
+}
+
+div .ac-btn-colors {
+  background-color: #f0f0f0;
+  border-color: #f0f0f0;
+  color: #000;
+  text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
+  background-color: #e6e6e6;
+  background-image: -moz-linear-gradient(top,#f0f0f0,#d7d7d7);
+  background-image: -webkit-gradient(linear,0 0,0 100%,from(#f0f0f0),to(#d7d7d7));
+  background-image: -webkit-linear-gradient(top,#f0f0f0,#d7d7d7);
+  background-image: -o-linear-gradient(top,#f0f0f0,#d7d7d7);
+  background-image: linear-gradient(to bottom,#f0f0f0,#d7d7d7);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff0f0f0', endColorstr='#ffd6d6d6', GradientType=0);
+  border-color: #d7d7d7 #d7d7d7 #b0b0b0;
+  border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);
+}
+div .ac-btn-colors:hover,
+.ac-btn-colors:focus {
+  text-decoration: none;
+  background-position: 0 -15px;
+  -webkit-transition: background-position .1s linear;
+  -moz-transition: background-position .1s linear;
+  -o-transition: background-position .1s linear;
+  transition: background-position .1s linear;
+}
+div .ac-btn-colors:hover,
+.ac-btn-colors:focus {
+  background-color: #d7d7d7;
+}
+div .ac-btn-colors:active,
+.ac-btn-colors.active,
+.ac-btn-colors.active:hover {
+  background-color: #e3e3e3;
+  border-color: #d7d7d7;
 }
