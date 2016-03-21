@@ -9,7 +9,7 @@ function writeIn(btnText) {
 		fieldText="";
 		evaluated=false;
 	}
-	if (fieldText.length===24){
+	if (fieldText.length===19){
 	}
 	else {
 		var lastChar=fieldText[fieldText.length-1];
@@ -20,6 +20,12 @@ function writeIn(btnText) {
 		else if (lastChar==="-" && strText==="-")
 			fieldText=fieldText.substring(0, fieldText.length-1);
 		if ((last2Char==="+-" || last2Char==="*-" || last2Char==="/-" || last2Char==="%-") && (strText==="+" || strText==="-" || strText==="*" || strText==="/" || strText==="%")) {} 
+		else if (fieldText==="0") {
+			fieldText="";
+		fieldText+=strText;
+		memory=fieldText;
+		$(".field").text(fieldText);
+		}
 		else {
 		fieldText+=strText;
 		memory=fieldText;
@@ -34,12 +40,14 @@ function clear1(){
 	memory.pop();
 	memory=memory.join("");
 	fieldText=memory;
+	if (fieldText==="")
+		fieldText="0";
 	$(".field").text(fieldText);
 }
 
 function allClear(){
 	evaluated=false;
-	fieldText = "";
+	fieldText = "0";
 	$(".field").text(fieldText);
 	memory = "";
 }
