@@ -1,4 +1,5 @@
-var function setTimerLength(){
+var onBreak = false;
+var function getTimerLength(){
 /*
  * retrieve number of minutes from web page
  * multiply by 60
@@ -7,7 +8,7 @@ var function setTimerLength(){
 	runTimer(totalTimerSec);
 }
 
-function setBreaklength(totalBreakSec) {
+function getBreaklength(totalBreakSec) {
 	runTimer(totalBreakSec);
 }
 
@@ -21,6 +22,16 @@ function timeToClock(time) {
 function countDown(totalTimerSec) {
 	totalTimerSec-=1;
 	timeToClock(totalTimerSec);
+	if (totalTimerSec===0 && onBreak===false) {
+		stopTimer();
+		runBreakTimer();
+		onBreak = !(onBreak);
+	}
+	else if (totalTimerSec===0 && onBreak===true) {
+		stopBreakTimer();
+		runTimer();
+		onBreak = !(onBreak);
+	}
 }
 function runTimer() {
 var timer=setInterval(countDown(), 1000);
@@ -31,6 +42,13 @@ clearInterval(timer);
 }
 
 
+function runBreakTimer() {
+var breakTimer=setInterval(countDown(), 1000);
+}
+
+function stopBreakTimer() {
+clearInterval(breakTimer);
+}
 
 $(document).ready(function() {
 
