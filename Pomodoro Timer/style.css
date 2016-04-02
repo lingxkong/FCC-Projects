@@ -1,8 +1,30 @@
+a,a:link,a:visited {
+	text-decoration:none;
+	color:green;
+}
+
+p,span a:hover {
+	text-decoration:none;
+}
+
+span a:focus,a:active{
+	text-decoration:none;
+}
+
 div {
 	border-style:solid; 
 	border-width:1px;
 }
 
  .wrapper {
+width:400px;
+margin: auto;
+ }
 
+ .adjuster {
+	 display: inline; 
+ }
+
+ .timer,.break {
+	 width: 300px;
  }

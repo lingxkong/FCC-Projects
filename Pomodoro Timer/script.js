@@ -1,10 +1,10 @@
 var onBreak = false;
-var function getTimerLength(){
+function getTimerLength(){
 /*
  * retrieve number of minutes from web page
  * multiply by 60
  * set to totalTimerSec
- */	
+ */
 	runTimer(totalTimerSec);
 }
 
@@ -50,8 +50,32 @@ function stopBreakTimer() {
 clearInterval(breakTimer);
 }
 
-$(document).ready(function() {
 
+$(document).ready(
+		function(){
+			var workTime = 25;
+			// var $workTime = workTime;
+			var breakTime = 5;
+			// var $breakTime = 5;
+			$("#workLength").html(workTime);
+			$("#breakLength").html(breakTime);
+			$("#workLengthDec").on("click",function(e){
+				workTime--;
+				$("#workLength").html(workTime);
+			});
+			$("#workLengthInc").on("click",function(e){
+				workTime++;
+				$("#workLength").html(workTime);
+			});
+			$("#breakLengthDec").on("click",function(e){
+				breakTime--;
+				$("#breakLength").html(breakTime);
+			});
+			$("#breakLengthInc").on("click",function(e){
+				breakTime++;
+				$("#breakLength").html(breakTime);
+			});
 
-});
+		}
+		);
 

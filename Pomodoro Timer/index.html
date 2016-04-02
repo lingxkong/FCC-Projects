@@ -1,10 +1,11 @@
+<!DOCTYPE HTML>
 <html>
 <head>
 <title>
 	JS Pomodoro Timer
 </title>
-<link type="text/css" rel="stylesheet" src="style.css">
-<link type="text/css" rel="stylesheet" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="style.css">
 
 </head>
 <body>
@@ -18,27 +19,47 @@ User Story: I can customize the length of each pomodoro.
 -->
 
 <a href="http://codepen.io/FreeCodeCamp/full/VemPZX" target="_blank">FCC Pomodoro</a>
+<button class="btn">random button</button>
 
 
-<div class="container wrapper">
+<div class="wrapper">
 	<div class="clock">
 	</div>
 	<br>
-	<div class="timerLength">
-		<div class="timerLengthDec">	
+	<div class="timer">
+			<a href="#">
+		<span id="workLengthDec" class="adjuster">
 			-
-		</div>
-		<div class="timerLengthInc">
+		</span>
+			</a>
+		<span id="workLength" class="adjuster">
+		</span>
+			<a href="#">
+		<span id="workLengthInc" class="adjuster">
 			+
-		</div>
+		</span>
+			</a>
 	</div>
-	<div class="breakLength">
+	<div class="break">
+			<a href="#">
+		<span id="breakLengthDec" class="adjuster">
+			-
+		</span>
+			</a>
+		<span id="breakLength" class="adjuster">
+		</span>
+			<a href="#">
+		<span id="breakLengthInc" class="adjuster">
+			+
+		</span>
+			</a>
 	</div>
 	
 </div>
 
 
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
 <script src="script.js"></script>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
 </body>
 </html>
