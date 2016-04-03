@@ -1,15 +1,19 @@
 var onBreak = false;
-function getTimerLength(){
+var totalTimerSec = 100;
+var breakMin = 0;
+
+function getWorkLength(workMin){
 /*
  * retrieve number of minutes from web page
  * multiply by 60
  * set to totalTimerSec
  */
-	runTimer(totalTimerSec);
+	totalTimerSec=workMin*60;
+	runWorkTimer(totalTimerSec);
 }
 
-function getBreaklength(totalBreakSec) {
-	runTimer(totalBreakSec);
+function getBreaklength(breakMin) {
+	runBreakTimer(breakMin*60);
 }
 
 function timeToClock(time) {
@@ -19,8 +23,8 @@ function timeToClock(time) {
 	$(".clock").text($time);
 }
 
-function countDown(totalTimerSec) {
-	totalTimerSec-=1;
+function countDown() {
+	totalTimerSec--;
 	timeToClock(totalTimerSec);
 	if (totalTimerSec===0 && onBreak===false) {
 		stopTimer();
@@ -29,20 +33,22 @@ function countDown(totalTimerSec) {
 	}
 	else if (totalTimerSec===0 && onBreak===true) {
 		stopBreakTimer();
-		runTimer();
+		runWorkTimer();
 		onBreak = !(onBreak);
 	}
 }
-function runTimer() {
-var timer=setInterval(countDown(), 1000);
+function runWorkTimer(secs) {
+	totalTimerSec = secs;
+var workTimer=setInterval(countDown(), 1000);
 }
 
 function stopTimer() {
-clearInterval(timer);
+clearInterval(workTimer);
 }
 
 
-function runBreakTimer() {
+function runBreakTimer(secs) {
+	totalTimerSec = secs;
 var breakTimer=setInterval(countDown(), 1000);
 }
 
@@ -75,7 +81,11 @@ $(document).ready(
 				breakTime++;
 				$("#breakLength").html(breakTime);
 			});
-
+			$("#start").on("click", function(e){
+				getTimerLength(workTime);
+				breakMin = breakTime;
+				workMin = workTime;
+			});
 		}
 		);
 
