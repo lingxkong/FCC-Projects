@@ -23,6 +23,7 @@ margin: auto;
 
  .adjuster {
 	 display: inline; 
+	 font-size:15pt;
  }
 
  .timer,.break {

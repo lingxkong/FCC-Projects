@@ -19,6 +19,8 @@ function getBreaklength(breakMin) {
 function timeToClock(time) {
 	var min = Math.floor(time/60);
 	var sec = Math.round(time % 60); 
+	sec=sec.toString();
+	if (sec.length==1) sec= "0" + sec;
 	var $time = min + " : " + sec;
 	$(".clock").text($time);
 }
@@ -27,35 +29,25 @@ function countDown() {
 	totalTimerSec--;
 	timeToClock(totalTimerSec);
 	if (totalTimerSec===0 && onBreak===false) {
-		stopTimer();
+		clearInterval(workTimer);
 		runBreakTimer();
 		onBreak = !(onBreak);
 	}
 	else if (totalTimerSec===0 && onBreak===true) {
-		stopBreakTimer();
+		clearInterval(breakTimer);
 		runWorkTimer();
 		onBreak = !(onBreak);
 	}
 }
 function runWorkTimer(secs) {
 	totalTimerSec = secs;
-var workTimer=setInterval(countDown(), 1000);
+workTimer=setInterval(countDown, 1000); //id not reachable by countDown()
 }
-
-function stopTimer() {
-clearInterval(workTimer);
-}
-
 
 function runBreakTimer(secs) {
 	totalTimerSec = secs;
-var breakTimer=setInterval(countDown(), 1000);
+breakTimer=setInterval(countDown, 1000);
 }
-
-function stopBreakTimer() {
-clearInterval(breakTimer);
-}
-
 
 $(document).ready(
 		function(){
@@ -66,7 +58,7 @@ $(document).ready(
 			$("#workLength").html(workTime);
 			$("#breakLength").html(breakTime);
 			$("#workLengthDec").on("click",function(e){
-				workTime--;
+				if (workTime > 1) workTime--;
 				$("#workLength").html(workTime);
 			});
 			$("#workLengthInc").on("click",function(e){
@@ -74,7 +66,7 @@ $(document).ready(
 				$("#workLength").html(workTime);
 			});
 			$("#breakLengthDec").on("click",function(e){
-				breakTime--;
+				if (breakTime > 1) breakTime--;
 				$("#breakLength").html(breakTime);
 			});
 			$("#breakLengthInc").on("click",function(e){
@@ -82,7 +74,7 @@ $(document).ready(
 				$("#breakLength").html(breakTime);
 			});
 			$("#start").on("click", function(e){
-				getTimerLength(workTime);
+				getWorkLength(workTime);
 				breakMin = breakTime;
 				workMin = workTime;
 			});
