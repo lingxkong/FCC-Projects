@@ -1,6 +1,7 @@
 var onBreak = false;
 var totalTimerSec = 100;
 var breakMin = 0;
+var workMin = 0;
 
 function getWorkLength(workMin){
 /*
@@ -12,7 +13,7 @@ function getWorkLength(workMin){
 	runWorkTimer(totalTimerSec);
 }
 
-function getBreaklength(breakMin) {
+function getBreakLength(breakMin) {
 	runBreakTimer(breakMin*60);
 }
 
@@ -22,7 +23,7 @@ function timeToClock(time) {
 	sec=sec.toString();
 	if (sec.length==1) sec= "0" + sec;
 	var $time = min + " : " + sec;
-	$(".clock").text($time);
+	$("#start").text($time);
 }
 
 function countDown() {
@@ -30,12 +31,12 @@ function countDown() {
 	timeToClock(totalTimerSec);
 	if (totalTimerSec===0 && onBreak===false) {
 		clearInterval(workTimer);
-		runBreakTimer();
+		getBreakLength(breakMin);
 		onBreak = !(onBreak);
 	}
 	else if (totalTimerSec===0 && onBreak===true) {
 		clearInterval(breakTimer);
-		runWorkTimer();
+		getWorkLength(workMin);
 		onBreak = !(onBreak);
 	}
 }
