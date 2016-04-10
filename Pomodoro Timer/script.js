@@ -2,8 +2,8 @@ var timerOn = false;
 var timerPaused = false;
 var onBreak = false;
 var totalTimerSec = 100;
-var breakMin = 0;
-var workMin = 0;
+var breakMin = 5;
+var workMin = 25;
 
 function getWorkLength(workMin){
 /*
@@ -60,12 +60,11 @@ function pause(){
 	timerPaused = true; 
 }
 
-function reset(){
-
-				if (timerOn) pause();
-				timerPaused = false;
-				timeToClock(workMin*60); 
-				$("#start").text("Start!");
+function reset(){ 
+	if (timerOn) pause();
+       	timerPaused = false; 
+	timeToClock(workMin*60);
+       	$("#start").text("Start!");
 }
 
 $(document).ready(
@@ -93,13 +92,13 @@ $(document).ready(
 				if (breakTime > 1) breakTime--;
 				$("#breakLength").html(breakTime);
 					breakMin = breakTime;
-				reset(breakMin);
+				reset();
 			});
 			$("#breakLengthInc").on("click",function(e){
 				breakTime++;
 				$("#breakLength").html(breakTime);
 					breakMin = breakTime;
-				reset(breakMin);
+				reset();
 			});
 			$("#start").on("click", function(e){
 				if (!timerOn && !timerPaused) {

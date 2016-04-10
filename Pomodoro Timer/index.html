@@ -10,30 +10,22 @@
 </head>
 <body>
 
-<!--
-User Story: I can start a 25 minute pomodoro, and the timer will go off once 25 minutes has elapsed.
-
-User Story: I can reset the clock for my next pomodoro.
-
-User Story: I can customize the length of each pomodoro.
--->
-
-<a href="http://codepen.io/FreeCodeCamp/full/VemPZX" target="_blank">FCC Pomodoro</a>
-
-
 <div class="wrapper container">
+	<img src="tomato.png"><b class="header"> Pomodoro Timer</b>
+	<br>	
 	<div class="clock">
 	</div>
 	<div class="controls row">
-		<div class="col-sm-6"> 
-			<a class="btn btn-block btn-success btn-lg" href="#"><span id="start">Start!</span></a> 
+		<div class="col-xs-6 controls"> 
+			<button id="start" class="btn btn-block btn-danger btn-lg cbtn">Start</button>
 		</div>
-		<div class="col-sm-6"> 
-			<a class="btn btn-block btn-default btn-lg" href="#"><span id="reset">Reset</span></a>
+		<div class="col-xs-6 controls"> 
+			<button id="reset" class="btn btn-block btn-lg cbtn">Reset</button>
 		</div>
 	</div>
 	<br>
-	<div class="timer">
+	<div class="controls row">
+		<div class="timer col-xs-6">
 			<a href="#">
 		<span id="workLengthDec" class="adjuster">
 			-
@@ -46,8 +38,8 @@ User Story: I can customize the length of each pomodoro.
 			+
 		</span>
 			</a>
-	</div>
-	<div class="break">
+		</div>
+		<div class="break col-xs-6">
 			<a href="#">
 		<span id="breakLengthDec" class="adjuster">
 			-
@@ -60,8 +52,8 @@ User Story: I can customize the length of each pomodoro.
 			+
 		</span>
 			</a>
+		</div>
 	</div>
-	
 </div>
 
 
