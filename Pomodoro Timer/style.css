@@ -1,59 +1,64 @@
-body, div{
-	background: #000000;
+body,
+div {
+  background: #000000;
 }
 
-a,a:link,a:visited {
-	text-decoration:none;
-	color:red;
+a,
+a:link,
+a:visited {
+  text-decoration: none;
+  color: red;
 }
 
-p,span a:hover {
-	text-decoration:none;
+p,
+span a:hover {
+  text-decoration: none;
 }
 
-span a:focus,a:active{
-	text-decoration:none;
+span a:focus,
+a:active {
+  text-decoration: none;
 }
 
 div {
-	color: #808080;
-	cursor: default;
-	text-align: center;
-	/*border-color:white;
+  color: #808080;
+  cursor: default;
+  text-align: center;
+  /*border-color:white;
 	border-style:solid; 
 	border-width:1px; */
 }
 
- .wrapper {
-width:450px;
-margin: auto;
-padding-top: 25px;
- }
+.wrapper {
+  width: 450px;
+  margin: auto;
+  padding-top: 25px;
+}
 
- .header {
-	 font-size: 310%;
- }
+.header {
+  font-size: 310%;
+}
 
 .clock {
-	 min-height:150px;
-	 font-size:900%;
-	 font-weight:bold;
- }
+  min-height: 150px;
+  font-size: 900%;
+  font-weight: bold;
+}
 
- .cbtn {
-	 border-radius:0;
- }
+.cbtn {
+  border-radius: 0;
+}
 
+.adjuster {
+  display: inline;
+  font-size: 350%;
+}
 
- .adjuster {
-	 display: inline; 
-	 font-size:350%;
- }
+.timer,
+.break {
+  display: inline-block;
+}
 
- .timer,.break {
-	 display: inline-block;
- }
-
- .controls {
-	 padding:0;
- }
+.controls {
+  padding: 0;
+}

@@ -1,64 +1,69 @@
 <!DOCTYPE HTML>
 <html>
+
 <head>
-<title>
-	JS Pomodoro Timer
-</title>
-<link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-<link type="text/css" rel="stylesheet" href="style.css">
+  <title>
+    JS Pomodoro Timer
+  </title>
+  <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link type="text/css" rel="stylesheet" href="style.css">
 
 </head>
+
 <body>
 
-<div class="wrapper container">
-	<img src="tomato.png"><b class="header"> Pomodoro Timer</b>
-	<br>	
-	<div class="clock">
-	</div>
-	<div class="controls row">
-		<div class="col-xs-6 controls"> 
-			<button id="start" class="btn btn-block btn-danger btn-lg cbtn">Start</button>
-		</div>
-		<div class="col-xs-6 controls"> 
-			<button id="reset" class="btn btn-block btn-lg cbtn">Reset</button>
-		</div>
-	</div>
-	<br>
-	<div class="controls row">
-		<div class="timer col-xs-6">
-			<a href="#">
-		<span id="workLengthDec" class="adjuster">
+  <div class="wrapper container">
+    <img src="https://github.com/lingxkong/FCC-Projects/blob/c5b487248c944982b92e0f93bfb0098f32b0b187/Pomodoro%20Timer/tomato.png?raw=true"><b class="header"> Pomodoro Timer</b>
+    <br>
+    <div class="clock">
+    </div>
+    <div class="controls row">
+      <div class="col-xs-6 controls">
+        <button id="start" class="btn btn-block btn-danger btn-lg cbtn">Start</button>
+      </div>
+      <div class="col-xs-6 controls">
+        <button id="reset" class="btn btn-block btn-lg cbtn">Reset</button>
+      </div>
+    </div>
+    <br>
+    <div class="controls row">
+      <div class="timer col-xs-6">
+        <a href="#">
+          <span id="workLengthDec" class="adjuster">
 			-
 		</span>
-			</a>
-		<span id="workLength" class="adjuster">
+        </a>
+        <span id="workLength" class="adjuster">
 		</span>
-			<a href="#">
-		<span id="workLengthInc" class="adjuster">
+        <a href="#">
+          <span id="workLengthInc" class="adjuster">
 			+
 		</span>
-			</a>
-		</div>
-		<div class="break col-xs-6">
-			<a href="#">
-		<span id="breakLengthDec" class="adjuster">
+        </a>
+      </div>
+      <div class="break col-xs-6">
+        <a href="#">
+          <span id="breakLengthDec" class="adjuster">
 			-
 		</span>
-			</a>
-		<span id="breakLength" class="adjuster">
+        </a>
+        <span id="breakLength" class="adjuster">
 		</span>
-			<a href="#">
-		<span id="breakLengthInc" class="adjuster">
+        <a href="#">
+          <span id="breakLengthInc" class="adjuster">
 			+
 		</span>
-			</a>
-		</div>
-	</div>
-</div>
+        </a>
+      </div>
+    </div>
+  </div>
 
-
-<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-<script src="script.js"></script>
+  <div id="alarm_workOver"></div>
+  <div id="alarm_breakOver"></div>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jplayer/2.9.2/jplayer/jquery.jplayer.min.js"></script>
+  <script src="script.js"></script>
 
 </body>
+
 </html>
